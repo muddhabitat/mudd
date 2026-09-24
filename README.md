@@ -1,11 +1,12 @@
 # Mudd Habitat LLC — website
 
-Static one-page site. No build step: plain HTML, images, and two JSX files transpiled in the browser.
+Static one-page site: plain HTML, CSS, images, and one precompiled JavaScript file. React loads from unpkg; nothing is compiled in the browser.
 
 ```
 index.html        page shell, SEO meta, LocalBusiness schema, React mount
-js/shared.jsx     brand tokens, contact info, project data, SVG helpers
-js/site.jsx       the page itself (hero, mission, stats, work, contact, footer)
+js/site.js        compiled page code — this is what the browser runs (don't hand-edit)
+src/shared.jsx    source: brand tokens, contact info, project data, logo reveal
+src/site.jsx      source: the page itself (hero, mission, stats, work, contact, footer)
 style.css         form styling + mobile breakpoints (1000 / 820 / 560px)
 assets/           logos + photography
 .nojekyll         tells GitHub Pages to serve files as-is
@@ -19,10 +20,12 @@ assets/           logos + photography
 
 ## Editing content
 
-Copy, contact info, and the project list live at the top of `js/shared.jsx`. Section copy is inline in `js/site.jsx`.
+The `src/` JSX files are the source of truth. After editing them, `js/site.js` must be recompiled (e.g. `npx babel src/shared.jsx src/site.jsx --presets @babel/preset-react -o js/site.js`, then append the two mount lines from the end of the current `js/site.js`). Editing `src/` alone will not change the live site.
+
+
+Copy, contact info, and the project list live at the top of `src/shared.jsx`. Section copy is inline in `src/site.jsx`.
 
 ## Known gaps
 
-- **The contact form sends via `mailto:`.** Submitting opens the visitor's email client with the fields pre-filled, addressed to cole@muddhabitat.com. It needs no server, but visitors without a configured mail app will see nothing happen — swap in Formspree or Netlify Forms if that becomes a problem. To change the recipient, edit `email` in `js/shared.jsx`.
-- Testimonials are written but hidden (`showTestimonials: false` in `js/shared.jsx`) pending real client quotes.
-- React and Babel load from unpkg, so the page needs a network connection and pays a short transpile cost on load. If that becomes a concern, precompile the JSX and drop the Babel script.
+- **The contact form sends via `mailto:`.** Submitting opens the visitor's email client with the fields pre-filled, addressed to cole@muddhabitat.com. It needs no server, but visitors without a configured mail app will see nothing happen — swap in Formspree or Netlify Forms if that becomes a problem. To change the recipient, edit `email` in `src/shared.jsx`.
+- Testimonials are written but hidden (`showTestimonials: false` in `src/shared.jsx`) pending real client quotes.
