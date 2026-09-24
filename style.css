@@ -1,0 +1,52 @@
+/* Mudd Habitat — form styling + responsive overrides.
+   Inline styles carry the desktop design; these rules override at small widths. */
+
+.mf-field{margin-bottom:20px}
+.mf-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.24em;opacity:.7;margin-bottom:8px}
+.mf-input,.mf-select,.mf-textarea{width:100%;background:transparent;color:#22223b;font-family:var(--font-display);font-size:15px;border:none;border-radius:0;outline:none;-webkit-appearance:none;appearance:none}
+.mf-input,.mf-select{border-bottom:1px solid rgba(34,34,59,.25);padding:0 0 10px}
+.mf-select{background-image:linear-gradient(45deg,transparent 50%,rgba(34,34,59,.55) 50%),linear-gradient(135deg,rgba(34,34,59,.55) 50%,transparent 50%);background-position:calc(100% - 9px) calc(50% - 4px),calc(100% - 4px) calc(50% - 4px);background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:24px}
+.mf-textarea{border:1px solid rgba(34,34,59,.2);padding:14px;min-height:104px;border-radius:2px;line-height:1.5;resize:vertical}
+.mf-input:focus,.mf-select:focus{border-bottom-color:#22223b}
+.mf-textarea:focus{border-color:#22223b}
+.mf-input::placeholder,.mf-textarea::placeholder{color:#4a4e69;font-style:italic;opacity:.75}
+.mf-submit{width:100%;background:#c9ada7;color:#22223b;border:none;padding:18px;font-family:var(--font-body);font-size:13px;letter-spacing:.18em;font-weight:700;border-radius:2px;cursor:pointer;transition:background .2s}
+.mf-submit:hover{background:#bd9a93}
+.mf-note{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:#4a4e69;opacity:.75;margin-top:14px;line-height:1.6}
+
+@media (max-width:1000px){
+  .sec{padding-top:76px!important;padding-bottom:76px!important}
+  .sec h2{font-size:40px!important}
+  .mission h2{font-size:34px!important}
+  .stats{grid-template-columns:1fr 1fr!important;gap:36px 40px!important}
+  .stats-head{grid-column:1/-1}
+  .stats-head h3{font-size:26px!important}
+  .stat-n{font-size:54px!important}
+  .contact{grid-template-columns:1fr!important;gap:44px!important}
+  .footcols{grid-template-columns:1fr 1fr!important;gap:36px!important}
+  .hero-meta{flex-direction:column!important;gap:8px!important}
+  .hero-meta>span:nth-child(2){display:none}
+}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr!important;min-height:0!important;height:auto!important}
+  .hero-copy{padding:40px 28px 44px!important;gap:34px;justify-content:flex-start!important}
+  .hero-logo{height:min(46vw,300px)!important}
+  .hero-tag{font-size:19px!important;margin-top:30px!important}
+  .hero-img{min-height:58vh;order:2}
+  .hero-img .hero-fade{background:linear-gradient(0deg,rgba(255,255,255,0) 82%,#fff 100%)!important}
+  .cards3{grid-template-columns:1fr 1fr!important;row-gap:52px!important}
+  .work-head{margin-top:64px!important;padding-top:64px!important}
+}
+
+@media (max-width:560px){
+  .sec{padding-top:60px!important;padding-bottom:60px!important}
+  .sec h2{font-size:32px!important}
+  .mission h2{font-size:28px!important}
+  .stats{grid-template-columns:1fr!important;gap:30px!important}
+  .cards3{grid-template-columns:1fr!important;row-gap:44px!important}
+  .footcols{grid-template-columns:1fr!important;gap:28px!important}
+  .footbot{flex-direction:column!important;gap:10px!important}
+  .foot-logo{margin-left:0!important}
+  .hero-meta{flex-direction:column!important;gap:8px!important}
+}
